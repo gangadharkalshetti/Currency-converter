@@ -1,4 +1,4 @@
-import IndexBox from './component/IndexBox'
+import IndexBox from './component/index.js'
 import './App.css'
 
 function App() {

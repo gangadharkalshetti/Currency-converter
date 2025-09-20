@@ -4,8 +4,8 @@ function IndexBox( {
     label,
     amount,
     onAmountChange,
-    oncurrencyChange,
-    currencyoptoins = [],
+    onCurrencyChange,
+    currencyOptoins = [],
     selectCurrency = "usd",
     AmountDisable = false,
     currencyDisable = false
@@ -24,7 +24,7 @@ function IndexBox( {
                         placeholder=' Amount'
                         disabled = {AmountDisable}
                         value={amount}
-                        onChange={(e) = onAmountChange && onAmountChange(Number(e.target.value)) }
+                        onChange={(e) => onAmountChange && onAmountChange(Number(e.target.value)) }
                     />
                 </div>
                 <div className='w-1/2 flex flex-wrap justify-end text-right'>
@@ -35,11 +35,11 @@ function IndexBox( {
                     className='rounded-l-lg px-1 py-1 bg-gray-100
                     cursor-pointer outline-none'
                     value={selectCurrency}
-                    onChange={(e) => oncurrencyChange && oncurrencyChange(e.target.value)}
+                    onChange={(e) =>     onCurrencyChange && onCurrencyChange(e.target.value)}
                     disabled ={currencyDisable}
                     >
-                        {currencyoptoins.map((currency) => (
-                            <option value={currency}>
+                        {currencyOptoins.map((currency) => (
+                            <option key={currency} value={currency}>
                                 {currency}
                             </option>
                         ))}
