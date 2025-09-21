@@ -1,3 +1,3 @@
-import IndexBox from "./IndexBox";
+import InputBox from "./InputBox";
 
-export default IndexBox;
+export default InputBox;

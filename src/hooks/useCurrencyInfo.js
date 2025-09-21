@@ -1,15 +1,25 @@
 import { useEffect, useState } from "react";
 
-function useCurrencyInfo (currency) {
-    const [data , setdata] = useState ({})
-    useEffect ( () => {
-        fetch(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/
-            ${currency}.json`)
-            .then((res) => res.json)
-            .then((res) => setdata(res[currency]) )
-    }, [currency])
-    console.log(data)
-    return data
+function useCurrencyInfo(currency) {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    if (!currency) return;
+
+    const Currency = currency.toUpperCase().trim();
+    fetch(`https://api.frankfurter.app/latest?from=${Currency}`)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log("API Response:", res);
+        setData(res.rates); // ✅ rates object save करणे
+      })
+      .catch((err) => {
+        console.error("Error fetching currency data:", err);
+        setData(null);
+      });
+  }, [currency]);
+
+  return data;
 }
 
-export default useCurrencyInfo
+export default useCurrencyInfo;
